@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Books list</h2>
+
+  <div *ngFor="let product of database">
+    <div class="border">
+      <div class="wrap">
+        <div class="product-wrap">
+          <a href=""><img src="https://www.teahub.io/photos/full/190-1905234_book-wallpaper-hd-5617-data-src-book-desktop.jpg"></a>
+        </div>
+        <div class="loop-action">
+          <a href="" class="add-to-cart">Быстрый просмотр</a>
+          <a href="" class="loop-add-to-cart">В корзину</a>
+        </div>
+      </div>
+        <div class="product-info">
+          <div class="stars"></div>
+          <h3 class="product-title">
+           <b>Name:</b> {{ product.name}}
+            <br>
+          <b>Book description: </b> {{ product.description}}
+            <br>
+           <b>Is available:</b> {{ product.isAvailable}}
+           <br>
+           <b>release year :</b> {{  product.createDate}}
+          </h3>
+          <div class="price">  {{ product.price}} &euro;</div>
+       </div>
+    </div>
+  
+   
+  </div>
+  
+
+
+
+</div>
