@@ -50,7 +50,7 @@
  .border:hover .loop-action {
     opacity: 1;
  }
- .loop-action a {
+ .loop-action button a {
     text-decoration: none;
     display: block;
     border: 1px solid white;
@@ -68,7 +68,8 @@
     margin: 5px auto;
     transition: .3s ease-in-out;
  }
- .loop-action a:after {
+
+ .loop-action button a:after {
     content: '';
     position: absolute;
     left: -220%;
@@ -80,10 +81,10 @@
     z-index: -1;
     transition: .3s ease-in-out;
  }
- .loop-action a:hover {
+ .loop-action button a:hover {
     color: black;
  }
- .loop-action a:hover:after {
+ .loop-action button a:hover:after {
     left: 0%;
  }
  .border:hover {

@@ -43,15 +43,19 @@ for (var i = 1; i<= 5; i++) {
   styleUrls: ['./book-component.component.scss']
 })
 export class BookComponentComponent implements OnInit {
+
  
 database = database;
-  constructor() { }
- 
- ngOnInit(): void {
 
-  console.log(database);
- }
- 
+buy() {
+  window.alert('The product has been bought!');
+}
+view() {
+  window.alert('The product has been viewed!');
+}
+ngOnInit(): void {
+  throw new Error('Method not implemented.');
+}
 
 }
 

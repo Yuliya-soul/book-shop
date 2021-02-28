@@ -8,8 +8,18 @@
           <a href=""><img src="https://www.teahub.io/photos/full/190-1905234_book-wallpaper-hd-5617-data-src-book-desktop.jpg"></a>
         </div>
         <div class="loop-action">
-          <a href="" class="add-to-cart">Быстрый просмотр</a>
-          <a href="" class="loop-add-to-cart">В корзину</a>
+          <p *ngIf="product.isAvailable">
+            <button (click)="buy()">
+              <a href="#" class="add-to-cart"> Buy</a>
+            </button>
+          </p>
+          <p><button (click)="view()">
+            <a href="#" class="add-to-cart"> Quick view</a>
+          </button>
+        </p>
+          
+        
+        
         </div>
       </div>
         <div class="product-info">
@@ -21,7 +31,7 @@
             <br>
            <b>Is available:</b> {{ product.isAvailable}}
            <br>
-           <b>release year :</b> {{  product.createDate}}
+           <b> Release year :</b> {{  product.createDate}}
           </h3>
           <div class="price">  {{ product.price}} &euro;</div>
        </div>
