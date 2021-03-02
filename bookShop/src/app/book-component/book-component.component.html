@@ -9,7 +9,7 @@
         </div>
         <div class="loop-action">
           <p *ngIf="product.isAvailable">
-            <button (click)="buy()">
+            <button (click)="buy(product)">
               <a href="#" class="add-to-cart"> Buy</a>
             </button>
           </p>
@@ -17,9 +17,7 @@
             <a href="#" class="add-to-cart"> Quick view</a>
           </button>
         </p>
-          
-        
-        
+       
         </div>
       </div>
         <div class="product-info">
@@ -32,8 +30,12 @@
            <b>Is available:</b> {{ product.isAvailable}}
            <br>
            <b> Release year :</b> {{  product.createDate}}
+           <br>
+           <b> Id :</b> {{  product.id}}
           </h3>
           <div class="price">  {{ product.price}} &euro;</div>
+          <br>
+          <div *ngIf="product.isAvailable"> At storage: {{ product.quantity}} </div>
        </div>
     </div>
   
