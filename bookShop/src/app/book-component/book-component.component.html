@@ -1,5 +1,10 @@
 <div class="container">
   <h2>Books list</h2>
+  <label>Add an item: <input #newItem></label>
+  <button (click)="addNewItem(newItem.value)">Add</button>
+  <p> Selected quantity to put    {{counter}}     <button (click)="increment()">+</button>
+    <button (click)="decrement()">-</button></p>
+  
   <div *ngFor="let product of database">
     <div class="border">
       <div class="wrap">
@@ -34,13 +39,13 @@
           </h3>
           <div class="price">  {{ product.price}} &euro;</div>
           <br>
+         
           <div *ngIf="product.isAvailable"> At storage: {{ product.quantity}} </div>
        </div>
     </div>
   
    
   </div>
-  
 
 
 

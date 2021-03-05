@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { databaseBooked1 } from '../products';
 @Component({
   selector: 'app-cart-item-component',
@@ -8,10 +8,8 @@ import { databaseBooked1 } from '../products';
 export class CartItemComponentComponent implements OnInit {
   databaseBooked=databaseBooked1
   constructor() { }
-  
- clear(){
-this.databaseBooked=[];
- }
+  @Input() item: string | undefined; // decorate the property with @Input()
+
   
  ngOnInit(): void {
    console.log('CartItemComponentComponent')

@@ -1,25 +1,39 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { database1, databaseBooked1, Book } from '../products';
 
 @Component({
   selector: 'app-book-component',
   templateUrl: './book-component.component.html',
   styleUrls: ['./book-component.component.scss']
+ 
 })
 
 export class BookComponentComponent implements OnInit {
 
 database = database1;
-  databaseBooked1= databaseBooked1;
+databaseBooked1= databaseBooked1;
+counter: number = 1;
+@Output() newItemEvent = new EventEmitter<string>();
 
-
+increment():void  {
+   this.counter++;
+ }
+decrement():void  { 
+  if (this.counter<=1) {this.counter=0;}
+  else{this.counter--; }
+}
+addNewItem(valueBook: string){
+this.counter=Number.parseInt(valueBook)
+}
 buy($event:any):void {
- let exist=false;
+
+  if($event.quantity>=this.counter){
+    let exist=false;
   for (let index = 0; index < databaseBooked1.length; index++) {
     const element = databaseBooked1[index];
     if($event.id===element.id){
     exist=true
-      element.quantity++
+      element.quantity= element.quantity+this.counter
     }
   }
   if (exist==false) {this.databaseBooked1.push( 
@@ -30,15 +44,18 @@ buy($event:any):void {
        true, 
        1,
        $event.id));}
+    
+      if ($event.quantity>0) {
+        $event.quantity=$event.quantity-this.counter;
+      };
+      if($event.quantity===0){$event.isAvailable=false}
+      }
+else {alert('Do not have enough books at storage!')}
   
-  
-if ($event.quantity>0) {
-  $event.quantity=$event.quantity-1;
-};
-if($event.quantity===0){$event.isAvailable=false}
-console.log(this.databaseBooked1)
-
-}
+ console.log(this.databaseBooked1)
+ 
+ }
+ 
 
 view() {
   window.alert('The product has been viewed!');
@@ -49,4 +66,8 @@ ngOnInit(): void {
 
 }
 
+
+function buySelected(product: any, any: any) {
+  throw new Error('Function not implemented.');
+}
 
