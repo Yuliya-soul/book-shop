@@ -26,4 +26,6 @@ import { CartItemComponentComponent } from './cart-item-component/cart-item-comp
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

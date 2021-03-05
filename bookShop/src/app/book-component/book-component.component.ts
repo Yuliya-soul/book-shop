@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
-import { database1, User } from '../products';
-
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { database1, databaseBooked1, Book } from '../products';
 
 @Component({
   selector: 'app-book-component',
@@ -10,16 +8,36 @@ import { database1, User } from '../products';
 })
 
 export class BookComponentComponent implements OnInit {
-databaseBooked: User[] =  [];
- 
-database = database1;
 
-buy(product: any) {
-  console.log(product);
-this.databaseBooked.push(product)
-if (product.quantity>0) {product.quantity=product.quantity-1};
-if(product.quantity===0){product.isAvailable=false}
- console.log(this.databaseBooked);
+database = database1;
+  databaseBooked1= databaseBooked1;
+
+
+buy($event:any):void {
+ let exist=false;
+  for (let index = 0; index < databaseBooked1.length; index++) {
+    const element = databaseBooked1[index];
+    if($event.id===element.id){
+    exist=true
+      element.quantity++
+    }
+  }
+  if (exist==false) {this.databaseBooked1.push( 
+    new Book($event.name,
+      $event.description, 
+      $event.price, 
+       $event.createDate, 
+       true, 
+       1,
+       $event.id));}
+  
+  
+if ($event.quantity>0) {
+  $event.quantity=$event.quantity-1;
+};
+if($event.quantity===0){$event.isAvailable=false}
+console.log(this.databaseBooked1)
+
 }
 
 view() {
@@ -30,4 +48,5 @@ ngOnInit(): void {
 }
 
 }
+
 

@@ -1,2 +1,17 @@
 <p>cart-item-component works!</p>
 
+<div *ngFor="let product of databaseBooked">
+    <table>
+        <tr>
+            <b>Name:</b> {{ product.name}}
+            {{ product.description}}
+            {{  product.createDate}}
+            {{  product.id}}
+            {{ product.price}} &euro;
+            {{ product.quantity}}
+        </tr>
+        <br>
+    </table>
+   
+</div>
+<button (click)="clear()">Clear basket</button>

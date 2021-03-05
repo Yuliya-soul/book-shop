@@ -7,8 +7,8 @@ var ngfaker = require('ng-faker');
   if (number===2) return 'Fantasy'
     if (number===3) return 'Politics'
 }  */
-var database: User[] =  [];
-
+var database: Book[] =  [];
+var databaseBooked: Book[] =  [];
 const enum Genre  {
   Fiction,
   NonFiction, 
@@ -17,7 +17,7 @@ const enum Genre  {
  
 }
 //declare var require: any
- interface IUser {
+ interface IBook {
   name: string;
   description: string;
   price: number;
@@ -28,7 +28,7 @@ const enum Genre  {
   id:number;
 }
 
-  export class User implements IUser{
+  export class Book implements IBook{
     name: string;
     description: string ;
     price: number;
@@ -66,7 +66,8 @@ for (var i = 1; i<= 5; i++) {
   var randomQuantity= ngfaker.random.number({ min: 1, max: 15 });
 
 database.push(
-  new User(randomName,randomDiscription, randomPrice, randomDate, randomAvailable, randomQuantity,i)
+  new Book(randomName,randomDiscription, randomPrice, randomDate, randomAvailable, randomQuantity,i)
 );
 }
 export const database1=database
+export const databaseBooked1=databaseBooked
