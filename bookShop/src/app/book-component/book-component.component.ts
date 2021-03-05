@@ -12,7 +12,7 @@ export class BookComponentComponent implements OnInit {
 
 database = database1;
 databaseBooked1= databaseBooked1;
-counter: number = 1;
+counter = 1;
 @Output() newItemEvent = new EventEmitter<string>();
 
 increment():void  {
@@ -26,7 +26,6 @@ addNewItem(valueBook: string){
 this.counter=Number.parseInt(valueBook)
 }
 buy($event:any):void {
-
   if($event.quantity>=this.counter){
     let exist=false;
   for (let index = 0; index < databaseBooked1.length; index++) {
@@ -42,7 +41,7 @@ buy($event:any):void {
       $event.price, 
        $event.createDate, 
        true, 
-       1,
+       this.counter,
        $event.id));}
     
       if ($event.quantity>0) {
@@ -53,6 +52,7 @@ buy($event:any):void {
 else {alert('Do not have enough books at storage!')}
   
  console.log(this.databaseBooked1)
+
  
  }
  
