@@ -1,11 +1,11 @@
 <div class="container">
-  <h2>Books list</h2>
-  <label>Add an item: <input #newItem></label>
+  <h2>Books </h2>
+
+  <label>Add an item: <input  type="number" #newItem></label>
   <button (click)="addNewItem(newItem.value)">Add</button>
-  <p> Selected quantity to put    {{counter}}     <button (click)="increment()">+</button>
-    <button (click)="decrement()">-</button></p>
+  <p> Selected quantity to put    {{counter}}     
   
-  <div *ngFor="let product of database">
+  <div *ngFor="let product of books">
     <div class="border">
       <div class="wrap">
         <div class="product-wrap">
@@ -46,7 +46,6 @@
   
    
   </div>
-
 
 
 </div>

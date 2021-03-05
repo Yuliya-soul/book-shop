@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { database1, databaseBooked1, Book } from '../products';
 
 @Component({
@@ -9,11 +9,9 @@ import { database1, databaseBooked1, Book } from '../products';
 })
 
 export class BookComponentComponent implements OnInit {
-
-database = database1;
+books = database1;
 databaseBooked1= databaseBooked1;
 counter = 1;
-@Output() newItemEvent = new EventEmitter<string>();
 
 increment():void  {
    this.counter++;
@@ -23,10 +21,11 @@ decrement():void  {
   else{this.counter--; }
 }
 addNewItem(valueBook: string){
-this.counter=Number.parseInt(valueBook)
+  this.counter=Number.parseInt(valueBook)
+ 
 }
 buy($event:any):void {
-  if($event.quantity>=this.counter){
+  if(($event.quantity>=this.counter)&&(this.counter>=1)){
     let exist=false;
   for (let index = 0; index < databaseBooked1.length; index++) {
     const element = databaseBooked1[index];
@@ -50,9 +49,6 @@ buy($event:any):void {
       if($event.quantity===0){$event.isAvailable=false}
       }
 else {alert('Do not have enough books at storage!')}
-  
- console.log(this.databaseBooked1)
-
  
  }
  
@@ -67,7 +63,4 @@ ngOnInit(): void {
 }
 
 
-function buySelected(product: any, any: any) {
-  throw new Error('Function not implemented.');
-}
 

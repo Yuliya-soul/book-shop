@@ -9,6 +9,7 @@ var ngfaker = require('ng-faker');
 }  */
 var database: Book[] =  [];
 var databaseBooked: Book[] =  [];
+
 const enum Genre  {
   Fiction,
   NonFiction, 
@@ -17,7 +18,7 @@ const enum Genre  {
  
 }
 //declare var require: any
- interface IBook {
+ export interface IBook {
   name: string;
   description: string;
   price: number;

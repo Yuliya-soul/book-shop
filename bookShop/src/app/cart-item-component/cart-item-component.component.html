@@ -1,16 +1,40 @@
-<p>cart-item-component works!</p>
+<div  *ngIf="hero" class="container">
 
-<div *ngFor="let product of databaseBooked">
-    <table>
-        <tr>
-            <b>Name:</b> {{ product.name}}
-            {{ product.description}}
-            {{  product.createDate}}
-            {{  product.id}}
-            {{ product.price}} &euro;
-            {{ product.quantity}}
-        </tr>
-        <br>
-    </table>
-   
+
+    <div class="border">
+      <div class="wrap">
+        <div class="product-wrap">
+          <a href="#"><img src="https://www.teahub.io/photos/full/190-1905234_book-wallpaper-hd-5617-data-src-book-desktop.jpg"></a>
+        </div>
+        <div class="loop-action">
+          <p *ngIf="hero.isAvailable">
+        
+        </p>
+       
+        </div>
+      </div>
+        <div class="product-info">
+          <div class="stars"></div>
+          <h3 class="product-title">
+           <b>Name:</b> {{ hero.name}}
+            <br>
+          <b>Book description: </b> {{ hero.description}}
+            <br>
+           <b>Is available:</b> {{ hero.isAvailable}}
+           <br>
+           <b> Release year :</b> {{  hero.createDate}}
+           <br>
+           <b> Id :</b> {{  hero.id}}
+          </h3>
+          <div class="price">  {{ hero.price}} &euro;</div>
+          <br>
+         
+          <div *ngIf="hero.isAvailable"> At storage: {{ hero.quantity}} </div>
+       </div>
+    </div>
+  
+ 
+  
 </div>
+
+

@@ -1,4 +1,6 @@
-<p>Books at your basket: </p>
 
+<h2> You have {{books.length}} original books</h2>
 
-<app-cart-item-component></app-cart-item-component>
+<app-cart-item-component *ngFor="let book of books" [hero]="book">
+   
+</app-cart-item-component>
