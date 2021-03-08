@@ -1,6 +1,7 @@
 
-<h2> You have {{books.length}} original books</h2>
+<h2> You have {{booksBooked.length}} original books</h2>
 
-<app-cart-item-component *ngFor="let book of books" [hero]="book">
+<app-cart-item-component *ngFor="let book of booksBooked" [book]="book" 
+(newItemEvent)="addItem($event,book)">
    
 </app-cart-item-component>

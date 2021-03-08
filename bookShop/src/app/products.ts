@@ -38,8 +38,15 @@ const enum Genre  {
     isAvailable: boolean;
     quantity:number;
     id:number;
-    
-    constructor(bookName: string, bookDescription: string, bookPrice: number, bookCreateDate: number,bookIsAvailable:boolean,bookQuantity:number,bookId:number) {
+     
+    constructor(bookName: string, 
+      bookDescription: string, 
+      bookPrice: number, 
+      bookCreateDate: number,
+      bookIsAvailable:boolean,
+      bookQuantity:number,
+      bookId:number ) 
+      {
        
       this.name = bookName;
       this.description = bookDescription;
@@ -49,6 +56,7 @@ const enum Genre  {
       this.quantity=bookQuantity;
      // this.category=bookCategory
       this.id=bookId;
+     
     }
   
     getFullInfo(surname: string): string {

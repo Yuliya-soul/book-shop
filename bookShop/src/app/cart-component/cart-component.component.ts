@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Injectable } from '@angular/core';
-import {  databaseBooked1, IBook} from '../products';
+
+import {  databaseBooked1, IBook,database1, Book} from '../products';
 
 
 
@@ -10,14 +9,24 @@ import {  databaseBooked1, IBook} from '../products';
   templateUrl: './cart-component.component.html',
   styleUrls: ['./cart-component.component.scss']
 })
-export class CartComponentComponent implements OnInit {
-books=databaseBooked1
+export class CartComponentComponent  {
+booksBooked=databaseBooked1
 selectedHero?: IBook;
  
+ database1=database1
+ counter = 1;
 
+addItem(newItem: any,book:any) {
+ this.counter=Number.parseInt(newItem)
 
-ngOnInit(): void {
-  console.log('CartComponentComponent')
- }
+  for (let index = 0; index < database1.length; index++) {
+    if(database1[index].id===book.id){
+      database1[index].quantity=database1[index].quantity+this.counter;
+      database1[index].isAvailable=true
+    }
+  }
+  this.counter=1; 
+ 
+}
 
 }

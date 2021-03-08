@@ -1,10 +1,5 @@
 <div class="container">
   <h2>Books </h2>
-
-  <label>Add an item: <input  type="number" #newItem></label>
-  <button (click)="addNewItem(newItem.value)">Add</button>
-  <p> Selected quantity to put    {{counter}}     
-  
   <div *ngFor="let product of books">
     <div class="border">
       <div class="wrap">
@@ -13,7 +8,7 @@
         </div>
         <div class="loop-action">
           <p *ngIf="product.isAvailable">
-            <button (click)="buy(product)">
+            <button (click)="buy(newItem.value,product)">
               <a href="#" class="add-to-cart"> Buy</a>
             </button>
           </p>
@@ -41,7 +36,11 @@
           <br>
          
           <div *ngIf="product.isAvailable"> At storage: {{ product.quantity}} </div>
+       
        </div>
+        <label >
+           <input  type="number" #newItem > </label>
+         
     </div>
   
    

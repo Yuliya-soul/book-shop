@@ -1,37 +1,49 @@
-<div  *ngIf="hero" class="container">
 
-
-    <div class="border">
-      <div class="wrap">
-        <div class="product-wrap">
-          <a href="#"><img src="https://www.teahub.io/photos/full/190-1905234_book-wallpaper-hd-5617-data-src-book-desktop.jpg"></a>
-        </div>
-        <div class="loop-action">
-          <p *ngIf="hero.isAvailable">
-        
-        </p>
-       
-        </div>
+<div  *ngIf="book" class="container">
+  <div class="border">
+    <div class="wrap">
+      <div class="product-wrap">
+        <a href="#"><img src="https://www.teahub.io/photos/full/190-1905234_book-wallpaper-hd-5617-data-src-book-desktop.jpg"></a>
       </div>
-        <div class="product-info">
-          <div class="stars"></div>
-          <h3 class="product-title">
-           <b>Name:</b> {{ hero.name}}
-            <br>
-          <b>Book description: </b> {{ hero.description}}
-            <br>
-           <b>Is available:</b> {{ hero.isAvailable}}
-           <br>
-           <b> Release year :</b> {{  hero.createDate}}
-           <br>
-           <b> Id :</b> {{  hero.id}}
-          </h3>
-          <div class="price">  {{ hero.price}} &euro;</div>
-          <br>
-         
-          <div *ngIf="hero.isAvailable"> At storage: {{ hero.quantity}} </div>
-       </div>
+      <div class="loop-action">
+        <p *ngIf="book.isAvailable">
+          <button  >
+            <a href="#" class="add-to-cart"  (click)="addNewItem(newItem.value, book)"> Remove</a>
+          </button>
+        </p>
+        <p><button >
+          <a href="#" class="add-to-cart"> Quick view</a>
+        </button>
+      </p>
+     
+      </div>
     </div>
+      <div class="product-info">
+        <div class="stars"></div>
+        <h3 class="product-title">
+         <b>Name:</b> {{ book.name}}
+          <br>
+        <b>Book description: </b> {{ book.description}}
+          <br>
+         <b>Is available:</b> {{ book.isAvailable}}
+         <br>
+         <b> Release year :</b> {{  book.createDate}}
+         <br>
+         <b> Id :</b> {{  book.id}}
+        </h3>
+        <div class="price">  {{ book.price}} &euro;</div>
+        <br>
+       
+        <div *ngIf="book.isAvailable"> At basket: {{ book.quantity}} </div>
+        <br>
+        <label><input type="number" #newItem  > </label>
+      
+    
+  </div>
+  
+ 
+
+
   
  
   
