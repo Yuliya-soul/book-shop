@@ -1,14 +1,13 @@
-<div class="container">
-  <h2>Books </h2>
-  <div *ngFor="let product of books">
+<div  *ngIf="book" >
+ 
     <div class="border">
       <div class="wrap">
         <div class="product-wrap">
           <a href="#"><img src="https://www.teahub.io/photos/full/190-1905234_book-wallpaper-hd-5617-data-src-book-desktop.jpg"></a>
         </div>
         <div class="loop-action">
-          <p *ngIf="product.isAvailable">
-            <button (click)="buy(newItem.value,product)">
+          <p *ngIf="book.isAvailable">
+            <button (click)="buy(newItem.value,book)">
               <a href="#" class="add-to-cart"> Buy</a>
             </button>
           </p>
@@ -22,28 +21,25 @@
         <div class="product-info">
           <div class="stars"></div>
           <h3 class="product-title">
-           <b>Name:</b> {{ product.name}}
+           <b>Name:</b> {{ book.name}}
             <br>
-          <b>Book description: </b> {{ product.description}}
+          <b>Book description: </b> {{ book.description}}
             <br>
-           <b>Is available:</b> {{ product.isAvailable}}
+           <b>Is available:</b> {{ book.isAvailable}}
            <br>
-           <b> Release year :</b> {{  product.createDate}}
+           <b> Release year :</b> {{  book.createDate}}
            <br>
-           <b> Id :</b> {{  product.id}}
+           <b> Id :</b> {{  book.id}}
           </h3>
-          <div class="price">  {{ product.price}} &euro;</div>
+          <div class="price">  {{ book.price}} &euro;</div>
           <br>
          
-          <div *ngIf="product.isAvailable"> At storage: {{ product.quantity}} </div>
+          <div *ngIf="book.isAvailable"> At storage: {{ book.quantity}} </div>
        
        </div>
         <label >
            <input  type="number" #newItem > </label>
-         
-    </div>
-  
-   
+    
   </div>
 
 

@@ -7,20 +7,23 @@ import { AppComponent } from './app.component';
 import { BookComponentComponent } from './book-component/book-component.component';
 import { CartComponentComponent } from './cart-component/cart-component.component';
 import { CartItemComponentComponent } from './cart-item-component/cart-item-component.component';
+import { BooksListComponentComponent } from './books-list-component/books-list-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponentComponent,
     CartComponentComponent,
-    CartItemComponentComponent
+    CartItemComponentComponent,
+    BooksListComponentComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-    { path: '', component: BookComponentComponent },
-    { path: 'data1/:id', component: BookComponentComponent },
+      { path: '', component: BookComponentComponent },
+      { path: 'products/:productId', component: BooksListComponentComponent },
+   
     ])
   ],
   providers: [],

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component,  EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IBook, database1,databaseBooked1} from '../products';
+
 
 @Component({
   selector: 'app-cart-item-component',

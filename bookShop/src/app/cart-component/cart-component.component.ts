@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
-import {  databaseBooked1, IBook,database1, Book} from '../products';
+import { Component} from '@angular/core';
+import {  databaseBooked1, IBook,database1} from '../products';
 
 
 
@@ -10,6 +9,7 @@ import {  databaseBooked1, IBook,database1, Book} from '../products';
   styleUrls: ['./cart-component.component.scss']
 })
 export class CartComponentComponent  {
+
 booksBooked=databaseBooked1
 selectedHero?: IBook;
  

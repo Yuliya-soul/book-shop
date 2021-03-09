@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { database1, databaseBooked1, Book } from '../products';
+import { Component, Input, OnInit } from '@angular/core';
+import { database1, databaseBooked1, Book, IBook } from '../products';
 
 @Component({
   selector: 'app-book-component',
@@ -12,7 +12,7 @@ export class BookComponentComponent {
 books = database1;
 databaseBooked1= databaseBooked1;
 counter = 1;
-   
+@Input() book?: IBook;  
 
 buy(valueBook: string,$event:any):void {
  

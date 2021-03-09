@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,ElementRef,Input, ViewChild } from '@angular/core';
 
 
 @Component({
@@ -7,7 +7,10 @@ import { Component,Input } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+  @ViewChild('viewMe', { static: false })
+  viewMe?: ElementRef<HTMLElement>; 
+
+  showMe = false;
 
 }
 

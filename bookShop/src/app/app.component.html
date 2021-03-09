@@ -1,10 +1,12 @@
 <div class="container">
-    <h1 #appTitle></h1>
+
+    <h1 *ngIf="showMe"#appTitle>Books shop</h1>
+    <button (click)="showMe = !showMe">Title </button>
     <header>  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
  
     </header>
     <main>
-        <app-book-component  ></app-book-component>
+        <app-books-list-component></app-books-list-component>
          
     </main>
     <div>
