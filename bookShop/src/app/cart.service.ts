@@ -10,36 +10,21 @@ export class CartService {
 
   books = database1;
   databaseBooked= databaseBooked1;
-  counter1 = 1;
+  counter = 1;
   sum=0;
-  sumMoney=0;
- 
 
-removeBook(value: string, book:any) {
-    if(value===''){value='1'}
-    this.counter1=Number.parseInt(value)
-     this.newItemEvent.emit(value);
- 
-  for (let index = 0; index < this.databaseBooked.length; index++) {
-    const element = this.databaseBooked[index];
-    if((book.id===element.id)&&(element.quantity>=this.counter1)){
-        element.quantity= element.quantity-this.counter1;
-     
-    }
-   }
- 
-  }
   addBook(valueBook: string,$event:any):void {
-    this.counter1=Number.parseInt(valueBook)
-   if(($event.quantity>=this.counter1)&&(this.counter1>=1)){
+    this.counter=Number.parseInt(valueBook)
+    this.sum=this.sum+this.counter;
+    console.log(this.sum)
+   if(($event.quantity>=this.counter)&&(this.counter>=1)){
      let exist=false;
-   for (let index = 0; index < databaseBooked1.length; index++) {
+    for (let index = 0; index < databaseBooked1.length; index++) {
      const element = databaseBooked1[index];
      if($event.id===element.id){
      exist=true
-       element.quantity= element.quantity+this.counter1;
-      
-     }
+       element.quantity= element.quantity+this.counter;
+    }
    }
    if (exist==false) {
      this.databaseBooked.push( 
@@ -49,22 +34,37 @@ removeBook(value: string, book:any) {
        $event.price, 
        $event.createDate, 
         true, 
-        this.counter1,
+        this.counter,
         $event.id));
-        this.counter1;
+        this.counter;
        };
      
        if ($event.quantity>0) {
-         $event.quantity=$event.quantity-this.counter1;
+         $event.quantity=$event.quantity-this.counter;
        };
        if($event.quantity===0){$event.isAvailable=false}
-       }
- else {alert('Do not have enough books at storage!')}
-  
+    }
+    else {alert('Do not have enough books at storage!')}
   }
+ 
+  removeBook(value: string, book:any) {
+  if(value===''){value='1'}
+    this.counter=Number.parseInt(value)
+    this.newItemEvent.emit(value);
+    this.sum=this.sum-this.counter;
+    console.log(this.sum)
 
-  
-  
+  for (let index = 0; index < this.databaseBooked.length; index++) {
+    const element = this.databaseBooked[index];
+    if((book.id===element.id)&&(element.quantity>=this.counter)){
+       element.quantity= element.quantity-this.counter;
+    }
+  }
+  }
+  getShippingPrices(){
+    console.log(this.sum)
+    return this.sum
+  }
 
 
 }

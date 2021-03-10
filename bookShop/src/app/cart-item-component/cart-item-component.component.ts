@@ -22,20 +22,7 @@ export class CartItemComponentComponent  {
 
 
   removeBook(value: string, book:any) {
-  
-    if(value===''){value='1'}
-    this.counter1=Number.parseInt(value)
-    this.newItemEvent.emit(value);
- 
-  for (let index = 0; index < this.databaseBooked.length; index++) {
-    const element = this.databaseBooked[index];
-    if((book.id===element.id)&&(element.quantity>=this.counter1)){
-        element.quantity= element.quantity-this.counter1;
-     
-    }
-   }
-  
-
+  this.cartService.removeBook(value,book)
   }
 
    increment():void  {

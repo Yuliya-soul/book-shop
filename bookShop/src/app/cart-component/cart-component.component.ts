@@ -10,26 +10,25 @@ import{CartService} from '../../app/cart.service'
 })
 export class CartComponentComponent  {
 
-  constructor(
-    private cartService: CartService,
-    ) { } 
-
 booksBooked=databaseBooked1
 selectedHero?: IBook;
  database1=database1
  counter = 1;
+sumQuantity: any;
 
-
- addItem(newItem: any,book:any) {
+constructor(private cartService: CartService) {
+  this.sumQuantity = this.cartService.getShippingPrices();
+}
+ addItemBackBookList(newItem: any,book:any) {
   this.counter=Number.parseInt(newItem)
- 
-   for (let index = 0; index < database1.length; index++) {
+    for (let index = 0; index < database1.length; index++) {
      if(database1[index].id===book.id){
        database1[index].quantity=database1[index].quantity+this.counter;
-       database1[index].isAvailable=true
-     }
+       database1[index].isAvailable=true;
+      }
    }
    this.counter=1; 
+  
  }
 
 
