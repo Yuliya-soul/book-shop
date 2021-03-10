@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { database1, databaseBooked1, Book, IBook } from '../products';
-
+import{CartService} from '../../app/cart.service'
+import { BookService } from '../book.service';
 @Component({
   selector: 'app-book-component',
   templateUrl: './book-component.component.html',
@@ -9,46 +10,21 @@ import { database1, databaseBooked1, Book, IBook } from '../products';
 })
 
 export class BookComponentComponent {
+  constructor(
+     private cartService: CartService,
+) { } 
 books = database1;
 databaseBooked1= databaseBooked1;
 counter = 1;
+totalBooked=0;
+totalSumBooked=0
+
 @Input() book?: IBook;  
 
 buy(valueBook: string,$event:any):void {
- 
-  this.counter=Number.parseInt(valueBook)
-  if(($event.quantity>=this.counter)&&(this.counter>=1)){
-    let exist=false;
-  for (let index = 0; index < databaseBooked1.length; index++) {
-    const element = databaseBooked1[index];
-    if($event.id===element.id){
-    exist=true
-      element.quantity= element.quantity+this.counter;
-     
-    }
-  }
-  if (exist==false) {
-    this.databaseBooked1.push( 
-    new Book(
-      $event.name,
-      $event.description, 
-      $event.price, 
-      $event.createDate, 
-       true, 
-       this.counter,
-       $event.id));
-       this.counter;
-      };
-    
-      if ($event.quantity>0) {
-        $event.quantity=$event.quantity-this.counter;
-      };
-      if($event.quantity===0){$event.isAvailable=false}
-      }
-else {alert('Do not have enough books at storage!')}
- 
- }
-
+          
+  this.cartService.addBook(valueBook,$event);
+}
 
 view() {
   window.alert('The product has been viewed!');
@@ -56,6 +32,5 @@ view() {
 
 
 }
-
 
 

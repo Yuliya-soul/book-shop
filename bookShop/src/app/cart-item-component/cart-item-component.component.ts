@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component,  EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IBook, database1,databaseBooked1} from '../products';
+import{CartService} from '../../app/cart.service'
 
 
 @Component({
@@ -9,6 +10,9 @@ import { IBook, database1,databaseBooked1} from '../products';
   changeDetection:ChangeDetectionStrategy.OnPush,
 })
 export class CartItemComponentComponent  {
+  constructor(
+      private cartService: CartService
+  ) { }
    @Input() book?: IBook;
    @Output() newItemEvent = new EventEmitter<string>();
  
@@ -17,11 +21,10 @@ export class CartItemComponentComponent  {
    counter1 = 1;
 
 
-
-   addNewItem(value: string, book:any) {
+  removeBook(value: string, book:any) {
+  
     if(value===''){value='1'}
     this.counter1=Number.parseInt(value)
-
     this.newItemEvent.emit(value);
  
   for (let index = 0; index < this.databaseBooked.length; index++) {
@@ -31,6 +34,8 @@ export class CartItemComponentComponent  {
      
     }
    }
+  
+
   }
 
    increment():void  {
@@ -40,6 +45,5 @@ export class CartItemComponentComponent  {
    if (this.counter1<=1) {this.counter1=0;}
    else{this.counter1--; }
  }
-
 
 }

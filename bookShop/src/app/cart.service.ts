@@ -1,22 +1,70 @@
-import { Injectable } from '@angular/core';
-
+import { EventEmitter, Injectable, Input, Output } from '@angular/core';
+import { IBook, database1,databaseBooked1, Book} from '../app/products';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
-    items = [];
 
-  /*   addToCart(product: string) {
-      this.items.push(product);
-    } */
-  
-    getItems() {
-      return this.items;
+export class CartService {
+  @Input() book?: IBook;
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  books = database1;
+  databaseBooked= databaseBooked1;
+  counter1 = 1;
+  sum=0;
+  sumMoney=0;
+ 
+
+removeBook(value: string, book:any) {
+    if(value===''){value='1'}
+    this.counter1=Number.parseInt(value)
+     this.newItemEvent.emit(value);
+ 
+  for (let index = 0; index < this.databaseBooked.length; index++) {
+    const element = this.databaseBooked[index];
+    if((book.id===element.id)&&(element.quantity>=this.counter1)){
+        element.quantity= element.quantity-this.counter1;
+     
     }
+   }
+ 
+  }
+  addBook(valueBook: string,$event:any):void {
+    this.counter1=Number.parseInt(valueBook)
+   if(($event.quantity>=this.counter1)&&(this.counter1>=1)){
+     let exist=false;
+   for (let index = 0; index < databaseBooked1.length; index++) {
+     const element = databaseBooked1[index];
+     if($event.id===element.id){
+     exist=true
+       element.quantity= element.quantity+this.counter1;
+      
+     }
+   }
+   if (exist==false) {
+     this.databaseBooked.push( 
+     new Book(
+       $event.name,
+       $event.description, 
+       $event.price, 
+       $event.createDate, 
+        true, 
+        this.counter1,
+        $event.id));
+        this.counter1;
+       };
+     
+       if ($event.quantity>0) {
+         $event.quantity=$event.quantity-this.counter1;
+       };
+       if($event.quantity===0){$event.isAvailable=false}
+       }
+ else {alert('Do not have enough books at storage!')}
   
-    clearCart() {
-      this.items = [];
-      return this.items;
-    }
+  }
+
+  
+  
+
 
 }
