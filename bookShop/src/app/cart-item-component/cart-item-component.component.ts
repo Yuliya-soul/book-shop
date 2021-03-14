@@ -32,17 +32,16 @@ export class CartItemComponentComponent  {
       }
     } 
     this.counter1=1; 
-   
-
-
   }
 
-   increment():void  {
+  
+
+  /*  increment():void  {
     this.counter1++;
   }
  decrement():void  { 
    if (this.counter1<=1) {this.counter1=0;}
    else{this.counter1--; }
- }
+ } */
 
 }

@@ -72,27 +72,7 @@ export class CartService {
   }
   }
   clearCart() {
-   for (let index = 0; index < this.books.length; index++) {
-    for (let index1 = 0; index1 < this.databaseBooked.length; index1++){
-        if(this.databaseBooked[index1].id===this.books[index].id){
-   const newQantity=this.books[index].quantity+ this.databaseBooked[index1].quantity; 
-    const BookChangeElement=new Book(
-      this.books[index].name,
-      this.books[index].description, 
-      this.books[index].price, 
-      this.books[index].createDate, 
-      true, 
-      this.books[index].randomRole,
-      newQantity,
-      this.books[index].id);
-          this.books.splice(index, 1,BookChangeElement);  
-     }
-    }
-  }
-  this.books=this.books
-  this.databaseBooked = [];
-
-   return this.databaseBooked
+   return this.databaseBooked=[]
       }
 
 
