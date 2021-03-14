@@ -1,30 +1,33 @@
 declare var require: any
-
 var ngfaker = require('ng-faker');
-/* function RoleMaker(number: number){
-  if (number===0) return 'Fiction'
-  if (number===1) return 'Non—fiction'
-  if (number===2) return 'Fantasy'
-    if (number===3) return 'Politics'
-}  */
+
+ 
 var database: Book[] =  [];
 var databaseBooked: Book[] =  [];
 
-const enum Genre  {
-  Fiction,
-  NonFiction, 
-  Fantasy,
-  Politics 
- 
+
+const enum Genre {
+  Fiction = 'Fiction',
+  NonFiction = 'NonFiction',
+  Fantasy = 'Fantasy',
+  Politics = 'Politics',
+  Non = 'Non',
+  RoleMaker = "RoleMaker"
 }
-//declare var require: any
+/*  function RoleMaker(number: any| undefined){
+   
+  if((number===0)&&(number!=undefined)) return 'Fiction'
+  if((number===1)&&(number!=undefined))  return 'Non—fiction'
+  if ((number===2)&&(number!=undefined))  return 'Fantasy'
+  if((number===3)&&(number!=undefined)) return 'Politics'
+} */  
  export interface IBook {
   name: string;
   description: string;
   price: number;
- // category: Genre ;
   createDate: number;
   isAvailable: boolean;
+  randomRole:Genre;
   quantity:number;
   id:number;
 }
@@ -33,17 +36,19 @@ const enum Genre  {
     name: string;
     description: string ;
     price: number;
-  //  category: Genre;
     createDate: number;
     isAvailable: boolean;
+    randomRole:Genre;
     quantity:number;
     id:number;
      
-    constructor(bookName: string, 
+    constructor(
+      bookName: string, 
       bookDescription: string, 
       bookPrice: number, 
       bookCreateDate: number,
       bookIsAvailable:boolean,
+      bookRandomRole:Genre,
       bookQuantity:number,
       bookId:number ) 
       {
@@ -54,29 +59,36 @@ const enum Genre  {
       this.createDate=bookCreateDate;
       this.isAvailable=bookIsAvailable;
       this.quantity=bookQuantity;
-     // this.category=bookCategory
+      this.randomRole=bookRandomRole;
       this.id=bookId;
      
     }
   
-    getFullInfo(surname: string): string {
-  
-        return this.name + " " + this.description;
-    }}
-
-    
+  }
+   
 for (var i = 1; i<= 5; i++) {
   var randomName = ngfaker.lorem.word();
-  var randomDiscription = ngfaker.lorem.phrase();
+  var randomDescription = ngfaker.lorem.phrase();
   var randomPrice=ngfaker.random.number({ min: 0, max: 5000 });
   var randomDate=ngfaker.random.number({ min: 1950, max: 2020 });
   var randomAvailable=ngfaker.random.boolean();
-  var randomRole= ngfaker.random.number({ min: 0, max: 3 });
+var randomRole=Genre.Politics;
+//var role=RoleMaker(ngfaker.random.number({ min: 0, max: 3 }));
+//var randomRole1=`Genre.${role}`;
   var randomQuantity= ngfaker.random.number({ min: 1, max: 15 });
 
 database.push(
-  new Book(randomName,randomDiscription, randomPrice, randomDate, randomAvailable, randomQuantity,i)
+  new Book(
+    randomName,
+    randomDescription,
+     randomPrice, 
+     randomDate, 
+     randomAvailable,
+     randomRole, 
+      randomQuantity,
+      i)
 );
+
 }
 export const database1=database
 export const databaseBooked1=databaseBooked

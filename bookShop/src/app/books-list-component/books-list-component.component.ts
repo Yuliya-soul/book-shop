@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { database1 } from '../products';
+import { database1 } from '../books';
 import{CartService} from '../../app/cart.service'
 @Component({
   selector: 'app-books-list-component',

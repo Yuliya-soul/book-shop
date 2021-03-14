@@ -1,10 +1,6 @@
-<div class="container">
-    <h2> You have {{booksBooked.length}} original books</h2>
-    <h2> Total number books in a basket : {{sumQuantity}} </h2>
-    
-    <app-cart-item-component *ngFor="let book of booksBooked" [book]="book" 
-    (newItemEvent)="addItemBackBookList($event,book)">
-       
-    </app-cart-item-component>
-</div>
+<h2> You have {{booksBooked.length}} original books</h2>
 
+<app-cart-item-component *ngFor="let bookB of booksBooked" [book]="bookB" 
+>
+   
+</app-cart-item-component>
