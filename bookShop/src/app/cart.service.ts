@@ -27,7 +27,22 @@ export class CartService {
             if(element.quantity===0){
                this.databaseBooked.splice(index, 1);
              }
+             if($event.id===this.databaseBooked[index].id){
+               const newQuantity=this.databaseBooked[index].quantity+this.counter
+              const exchangeBook= new Book (
+                 $event.name,
+                  $event.description, 
+                  $event.price, 
+                  $event.createDate, 
+                  true, 
+                  $event.randomRole,
+                  newQuantity,
+                  $event.id)               
+              this.databaseBooked.splice(index,1,exchangeBook);
+              this.exist=true
+            }
           } 
+      
           if((this.exist==false)&&((this.counter>=1))) {
         this.databaseBooked.push( 
           new Book(
