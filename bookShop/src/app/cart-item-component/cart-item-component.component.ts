@@ -17,7 +17,6 @@ export class CartItemComponentComponent  {
    @Output() newItemEvent = new EventEmitter<string>();
  
    books = database1;
-  // databaseBooked= databaseBooked1;
    counter1 = 1;
 
 
