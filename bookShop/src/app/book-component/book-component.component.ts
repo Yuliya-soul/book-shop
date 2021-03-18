@@ -14,7 +14,7 @@ import { BookService } from '../book.service';
 export class BookComponentComponent  {
   constructor(
      private cartService: CartService,
-     private bookService:BookService,
+
    ) { } 
 
  

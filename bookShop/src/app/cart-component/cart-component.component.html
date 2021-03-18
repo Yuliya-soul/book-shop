@@ -1,7 +1,7 @@
 <h2> You have {{booksBooked.length}} original books</h2>
 <h2>Total quantity books:</h2>
-<button (click)="clear()">Clear</button>
+<button (click)="removeAllBooks()">Clear</button>
 <app-cart-item-component *ngFor="let bookB of booksBooked" [book]="bookB" 
 >
-   
+
 </app-cart-item-component>

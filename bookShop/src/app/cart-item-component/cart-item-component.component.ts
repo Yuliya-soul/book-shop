@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component,  EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IBook, database1,databaseBooked1} from '../books';
+import { ChangeDetectionStrategy, Component,  EventEmitter, Input,  Output } from '@angular/core';
+import { IBook, database1} from '../books';
 import{CartService} from '../../app/cart.service'
 
 
@@ -13,9 +13,10 @@ export class CartItemComponentComponent  {
   constructor(
       private cartService: CartService
   ) { }
+ 
    @Input() book?: IBook;
    @Output() newItemEvent = new EventEmitter<string>();
- 
+
    books = database1;
    counter1 = 1;
 
@@ -36,12 +37,6 @@ export class CartItemComponentComponent  {
 
   
 
-  /*  increment():void  {
-    this.counter1++;
-  }
- decrement():void  { 
-   if (this.counter1<=1) {this.counter1=0;}
-   else{this.counter1--; }
- } */
+
 
 }
