@@ -17,7 +17,7 @@ export class CartService {
   exist=false;
   totalQuantity=0;
   totalSum=0;
-  CartProduct:any;
+  CartProduct=''
 
   addBook(valueBook: string,$event:any):void {
    
@@ -67,6 +67,7 @@ export class CartService {
           if($event.quantity===0){$event.isAvailable=false};
          this.totalQuantity= this.updateCartData();
          this.totalSum=this.updateTotalSum();
+         this.CartProduct=this.updateCartProduct()
       }
        else {alert('Do not have enough books at storage!')}
   }
@@ -128,6 +129,14 @@ export class CartService {
     console.log('totalSum',this.totalSum)
     return this.totalSum
   }
+updateCartProduct(){
+let str=''
+  for (let index = 0; index < this.databaseBooked.length; index++) {
+str=str+this.databaseBooked[index].name+'  '
 
+   }
+   console.log( str)
+return str
+}
  
 }
