@@ -1,7 +1,9 @@
 <h2> You have {{booksBooked.length}} original books</h2>
-<h2>Total quantity books:</h2>
+<h4>Quantity books in basket :{{totalBooked}}</h4>
+<h4>Total sum of books in basket :{{totalSumBooked}}  &euro; </h4>
 <button (click)="removeAllBooks()">Clear</button>
-<app-cart-item-component *ngFor="let bookB of booksBooked" [book]="bookB" 
+<app-cart-item-component *ngFor="let bookB of booksBooked" [book]="bookB"
+(onChanged)="onChanged($event)"
 >
 
 </app-cart-item-component>

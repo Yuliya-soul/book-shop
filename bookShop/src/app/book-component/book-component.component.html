@@ -7,7 +7,7 @@
         </div>
         <div class="loop-action">
           <p *ngIf="book.isAvailable">
-            <button (click)="buy(newItem.value,book)">
+            <button (click)="buy(newItem.value,book)" (click)="change(true)">
               <a href="#" class="add-to-cart"> Buy</a>
             </button>
           </p>
@@ -39,8 +39,10 @@
        
        </div>
         <label >
-           <input  type="number" #newItem > </label>
-    
+           <input  type="number" #newItem value ={{counter}} placeholder={{counter}} >
+        </label>
+           <button (click)="increaseQuantity()">+</button>
+           <button (click)="decreaseQuantity()">-</button>
   </div>
 
 

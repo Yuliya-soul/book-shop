@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component,  EventEmitter, Input,  Output } from '@angular/core';
 import { IBook, database1} from '../books';
-import{CartService} from '../../app/cart.service'
+import{CartService} from '../services/cart.service'
 
 
 @Component({
@@ -16,16 +16,19 @@ export class CartItemComponentComponent  {
  
    @Input() book?: IBook;
    @Output() newItemEvent = new EventEmitter<string>();
-
+   @Output() onChanged = new EventEmitter<boolean>();
+   change(increased:any) {
+       this.onChanged.emit(increased);
+   }
    books = database1;
    counter1 = 1;
 
+   
 
   removeBook(value: string, book:any) {
-
   this.cartService.removeBook(value,book)
   this.counter1=Number.parseInt(value)
-
+ 
   for (let index = 0; index < this.books.length; index++) {
       if(this.books[index].id===book.id){
         this.books[index].quantity=this.books[index].quantity+this.counter1;
@@ -33,8 +36,13 @@ export class CartItemComponentComponent  {
       }
     } 
     this.counter1=1; 
+ 
   }
-
+  increaseQuantity() { 
+    this.counter1++; }
+  decreaseQuantity() { 
+    if(this.counter1>0)
+    {this.counter1--;} }
   
 
 

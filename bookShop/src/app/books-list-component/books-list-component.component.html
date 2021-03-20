@@ -1,8 +1,12 @@
 
     <h2>Books </h2>
-    <app-book-component *ngFor="let book of books" [book]="book">
-       
+
+   <h4>Quantity books in basket :{{totalBooked}}</h4>
+   <h4>Total sum of books in basket :{{totalSumBooked}}  &euro; </h4>
+    <app-book-component *ngFor="let book of books" [book]="book"
+    (onChanged)="onChanged($event)"
+    >
+      
     </app-book-component>
+  
 
-
-    

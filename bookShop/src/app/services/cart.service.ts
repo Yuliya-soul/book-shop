@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable, Input, Output } from '@angular/core';
-import { IBook, database1,databaseBooked1, Book} from './books';
+import { IBook, database1,databaseBooked1, Book} from '../books';
 
 @Injectable({
   providedIn: 'root'
@@ -127,4 +127,8 @@ export class CartService {
     console.log('totalSum',this.totalSum)
     return this.totalSum
   }
+  increaseQuantity(){
+
+  }
+ 
 }
