@@ -14,16 +14,19 @@ export class CartComponentComponent  {
 ) { ;}
   booksBooked=databaseBooked1;
   books=database1;
-  totalBooked=this.cartService.updateCartData()
-  totalSumBooked=this.cartService.updateCartData();
+  totalBooked=0;
+  totalSumBooked=0;
   
   removeAllBooks() {
-    this.cartService.removeAllBooks()
+    this.cartService.removeAllBooks();
+    this.totalBooked=0;
+    this.totalSumBooked=0;
  }  
-  onChanged(increased:any){
-   if(increased==true){ 
-     this.totalBooked=this.cartService.updateCartData();
-     this.totalSumBooked=this.cartService.updateTotalSum();
+ onChanged(increased:any){
+  if(increased==true){ 
+    this.totalBooked=this.cartService.updateCartData();
+    this.totalSumBooked=this.cartService.updateTotalSum();
    }
-  }
+}
+
 }

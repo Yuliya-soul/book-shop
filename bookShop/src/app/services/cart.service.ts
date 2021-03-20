@@ -20,6 +20,7 @@ export class CartService {
   CartProduct:any;
 
   addBook(valueBook: string,$event:any):void {
+   
    if(valueBook===''){valueBook='0'};
     this.counter=Number.parseInt(valueBook);
       if((this.counter>=1)&&(this.counter<=$event.quantity)){
@@ -127,8 +128,6 @@ export class CartService {
     console.log('totalSum',this.totalSum)
     return this.totalSum
   }
-  increaseQuantity(){
 
-  }
  
 }

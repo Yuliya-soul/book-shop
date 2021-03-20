@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { database1 } from '../books';
 import { CartService } from '../services/cart.service';
 
@@ -12,7 +12,7 @@ export class BooksListComponentComponent  {
     private cartService: CartService,
 
   ) { } 
- 
+
   books = database1;
   totalBooked=0;
   totalSumBooked=0;

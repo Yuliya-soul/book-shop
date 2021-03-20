@@ -11,23 +11,22 @@ import { BookService } from '../services/book.service';
  
 })
 
-export class BookComponentComponent  {
+export class BookComponentComponent {
   constructor(
      private cartService: CartService,
 
    ) { } 
+
 books = database1;
 databaseBooked1= databaseBooked1;
 counter = 1;
 
 @Input() book?: IBook;  
 @Output() onChanged = new EventEmitter<boolean>();
-    change(increased:any) {
-        this.onChanged.emit(increased);
-    }
-buy(valueBook: string,$event:Book):void {
-  this.cartService.addBook(valueBook,$event);
 
+buy(valueBook: string,$event:Book,increased:any):void {
+  this.cartService.addBook(valueBook,$event);
+  this.onChanged.emit(increased)
 }
 
 view() {

@@ -13,22 +13,16 @@ export class CartItemComponentComponent  {
   constructor(
       private cartService: CartService
   ) { }
+  @Output() newItemEvent = new EventEmitter<string>();
+  @Output() onChanged = new EventEmitter<boolean>();
+  @Input() book?: IBook;
+  books = database1;
+  counter1 = 1;
  
-   @Input() book?: IBook;
-   @Output() newItemEvent = new EventEmitter<string>();
-   @Output() onChanged = new EventEmitter<boolean>();
-   change(increased:any) {
-       this.onChanged.emit(increased);
-   }
-   books = database1;
-   counter1 = 1;
-
-   
-
-  removeBook(value: string, book:any) {
+  removeBook(value: string, book:any,increased:boolean) {
   this.cartService.removeBook(value,book)
   this.counter1=Number.parseInt(value)
- 
+  this.onChanged.emit(increased);
   for (let index = 0; index < this.books.length; index++) {
       if(this.books[index].id===book.id){
         this.books[index].quantity=this.books[index].quantity+this.counter1;
@@ -44,7 +38,4 @@ export class CartItemComponentComponent  {
     if(this.counter1>0)
     {this.counter1--;} }
   
-
-
-
 }
