@@ -12,7 +12,7 @@
             </button>
           </p>
           <p><button (click)="view()">
-            <a href="#" class="add-to-cart"> Quick view</a>
+            <a href="#" class="add-to-cart"  routerLink="/product/{{book.id}}"> Quick view</a>
           </button>
         </p>
        
@@ -36,8 +36,8 @@
          <div > Category: {{ book.randomRole| uppercase}} </div>
           <br> 
           <div *ngIf="book.isAvailable"> At storage: {{ book.quantity}} </div>
-       
-       </div>
+       <br>
+        </div>
         <label >
            <input  type="number" #newItem value ={{counter}} placeholder={{counter}} >
         </label>
