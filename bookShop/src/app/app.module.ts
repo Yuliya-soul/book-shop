@@ -10,6 +10,7 @@ import { CartItemComponentComponent } from './cart-item-component/cart-item-comp
 import { BooksListComponentComponent } from './books-list-component/books-list-component.component';
  
 import { HttpClientModule }   from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { HttpClientModule }   from '@angular/common/http';
       { path: '', component: BookComponentComponent },
       { path: 'products/:productId', component: BooksListComponentComponent },
    
-    ])
+    ]),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

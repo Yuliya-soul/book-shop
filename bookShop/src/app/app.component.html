@@ -1,15 +1,12 @@
-<div class="container">
+<h1>Books shop</h1>
+<nav >
+    <a routerLink="/">Books at storage</a>
+    <br>
+    <a routerLink="/cart">Products in basket</a>
+    <br>
+  
+ </nav>
+<router-outlet></router-outlet>
 
-    <h1 *ngIf="showMe"#appTitle>Books shop</h1>
-    <button (click)="showMe = !showMe">Title </button>
-    <header>  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
- 
-    </header>
-    <main>
-        <app-books-list-component  ></app-books-list-component>
-         
-    </main>
-    <div>
-        <app-cart-component  ></app-cart-component>
-    </div>
-</div>
+<body>
+
