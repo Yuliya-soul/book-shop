@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable, Input, Output } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { IBook, database1,databaseBooked1, Book} from '../books';
 
 @Injectable({
@@ -138,5 +139,6 @@ str=str+this.databaseBooked[index].name+'  '
  //  console.log( str)
 return str
 }
+
  
 }

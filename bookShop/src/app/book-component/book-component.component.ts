@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book, IBook } from '../books';
 import{CartService} from '../services/cart.service'
 import { BookService } from '../services/book.service';

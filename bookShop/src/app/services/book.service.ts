@@ -27,10 +27,9 @@ configUrl = 'assets/Book.json';
   getBooks(): Observable<IBook[]> {
     return of(this.database);
   }
-getBookById(id: number){
- 
-  return JSON.stringify(this.database.filter(item => item.id === id))
-}
+  getBookById(id: number){
+    return JSON.stringify(this.database.filter(item => item.id === id))
+  }
 
 }
 

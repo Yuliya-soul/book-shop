@@ -17,7 +17,7 @@ export class BooksListComponentComponent  implements OnInit {
      ) { } 
  // books=this.bookService.getBooksStorage();
    books:IBook[] | undefined
-   totalBooked=0;
+   totalBooked?:number;
   totalSumBooked=0;
   users?: Observable<any> 
   user?: IBook;
@@ -27,12 +27,14 @@ export class BooksListComponentComponent  implements OnInit {
   ngOnInit(){
   this.bookService.getBooks().subscribe((books) => this.books = books)  
   this.users = this.bookService.getBooksJson();
-}
+  }
   
   onChanged(increased:any){
    if(increased==true){ 
      this.totalBooked=this.cartService.updateCartData();
      this.totalSumBooked=this.cartService.updateTotalSum();
+    
+    
     }
   }
 
