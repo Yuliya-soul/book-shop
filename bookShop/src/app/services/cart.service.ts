@@ -118,7 +118,7 @@ export class CartService {
     for (let index = 0; index < this.databaseBooked.length; index++) {
       this.totalQuantity=this.totalQuantity+this.databaseBooked[index].quantity;
     }
-      console.log('totalQuantity',this.totalQuantity)
+    //  console.log('totalQuantity',this.totalQuantity)
       return this.totalQuantity
     }
   updateTotalSum(){
@@ -126,7 +126,7 @@ export class CartService {
     for (let index = 0; index < this.databaseBooked.length; index++) {
       this.totalSum=this.totalSum+this.databaseBooked[index].quantity*this.databaseBooked[index].price;
      }
-    console.log('totalSum',this.totalSum)
+  //  console.log('totalSum',this.totalSum)
     return this.totalSum
   }
 updateCartProduct(){
@@ -135,7 +135,7 @@ let str=''
 str=str+this.databaseBooked[index].name+'  '
 
    }
-   console.log( str)
+ //  console.log( str)
 return str
 }
  

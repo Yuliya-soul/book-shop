@@ -1,19 +1,20 @@
 import { Component} from '@angular/core';
-import { database1, databaseBooked1} from '../books';
+import { BookService } from '../services/book.service';
 import { CartService} from '../services/cart.service';
 
 @Component({
   selector: 'app-cart-component',
   templateUrl: './cart-component.component.html',
   styleUrls: ['./cart-component.component.scss'],
-  providers: [CartService]
+  providers: [CartService,BookService]
 })
 export class CartComponentComponent  {
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private bookService: BookService
 ) { ;}
-  booksBooked=databaseBooked1;
-  books=database1;
+  booksBooked=this.bookService.getBooksBasket()
+  books=this.bookService.getBooksStorage();
   totalBooked=0;
   totalSumBooked=0;
   

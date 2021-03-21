@@ -7,7 +7,7 @@
         </div>
         <div class="loop-action">
           <p *ngIf="book.isAvailable">
-            <button (click)="buy(newItem.value,book,true)" >
+            <button (click)="buy(newItem.value,book,true)"  >
               <a href="#" class="add-to-cart"> Buy</a>
             </button>
           </p>
@@ -31,9 +31,9 @@
            <br>
            <b> Id :</b> {{  book.id}}
           </h3>
-          <div class="price">  {{ book.price}} &euro;</div>
+          <div class="price">  {{ book.price|currency}}</div>
           <br>
-         <div > Category: {{ book.randomRole}} </div>
+         <div > Category: {{ book.randomRole| uppercase}} </div>
           <br> 
           <div *ngIf="book.isAvailable"> At storage: {{ book.quantity}} </div>
        

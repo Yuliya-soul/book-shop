@@ -33,6 +33,7 @@ const enum Genre {
 }
 
   export class Book implements IBook{
+ 
     name: string;
     description: string ;
     price: number;

@@ -1,0 +1,28 @@
+[{
+    "name": "Destiny",
+    "description": "string",
+    "price": 2,
+    "createDate": 2015,
+    "isAvailable": true,
+    "randomRole":"Politics",
+    "quantity":3,
+    "id":1
+},{
+    "name": "Destiny1",
+    "description": "string",
+    "price": 2,
+    "createDate": 2015,
+    "isAvailable": true,
+    "randomRole":"Politics",
+    "quantity":3,
+    "id":2
+},{
+    "name": "Destiny3",
+    "description": "string",
+    "price": 2,
+    "createDate": 2015,
+    "isAvailable": true,
+    "randomRole":"Politics",
+    "quantity":3,
+    "id":3
+}]

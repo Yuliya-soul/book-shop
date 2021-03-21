@@ -1,6 +1,6 @@
 <h2> You have {{booksBooked.length}} original books</h2>
+<h4>Total sum of books in basket :{{totalSumBooked|currency}}  </h4>
 <h4>Quantity books in basket :{{totalBooked}}</h4>
-<h4>Total sum of books in basket :{{totalSumBooked}}  &euro; </h4>
 <button (click)="removeAllBooks()">Clear</button>
 <app-cart-item-component *ngFor="let bookB of booksBooked" [book]="bookB"
 

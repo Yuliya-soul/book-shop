@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { database1, databaseBooked1, Book, IBook } from '../books';
+import { Component, Input } from '@angular/core';
+import { Book, IBook } from '../books';
 import{CartService} from '../services/cart.service'
 import { BookService } from '../services/book.service';
+
 
 @Component({
   selector: 'app-book-component',
@@ -12,23 +13,29 @@ import { BookService } from '../services/book.service';
 })
 
 export class BookComponentComponent {
+  httpService: any;
   constructor(
-     private cartService: CartService,
-
+    private cartService: CartService,
+    private bookService:BookService,
+   
    ) { } 
 
-books = database1;
-databaseBooked1= databaseBooked1;
+
+books=this.bookService.getBooksStorage()
+databaseBooked1=this.bookService.getBooksBasket()
 counter = 1;
 
+
 @Input() book?: IBook;  
-@Output() onChanged = new EventEmitter<boolean>();
+//@Output() onChanged = new EventEmitter<boolean>();
+
 
 buy(valueBook: string,$event:Book,increased:any):void {
   this.cartService.addBook(valueBook,$event);
-  this.onChanged.emit(increased)
-}
+ // this.onChanged.emit(increased);
 
+  
+}
 view() {
   window.alert('The product has been viewed!');
 }
@@ -37,7 +44,11 @@ increaseQuantity() {
 decreaseQuantity() { 
   if(this.counter>0)
   {this.counter--;} }
+  
 
+
+ 
 }
+
 
 
