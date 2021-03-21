@@ -19,8 +19,6 @@ export class BookComponentComponent {
     private bookService:BookService,
    
    ) { } 
-
-
 books=this.bookService.getBooksStorage()
 databaseBooked1=this.bookService.getBooksBasket()
 counter = 1;
@@ -45,9 +43,6 @@ decreaseQuantity() {
   if(this.counter>0)
   {this.counter--;} }
   
-
-
- 
 }
 
 

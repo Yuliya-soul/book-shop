@@ -1,23 +1,25 @@
 import { Component} from '@angular/core';
 import { BookService } from '../services/book.service';
 import { CartService} from '../services/cart.service';
+import {SortPipe} from '../../shared/pipes/order-by.pipe';
 
 @Component({
   selector: 'app-cart-component',
   templateUrl: './cart-component.component.html',
   styleUrls: ['./cart-component.component.scss'],
-  providers: [CartService,BookService]
+  providers: [CartService,BookService,SortPipe]
 })
 export class CartComponentComponent  {
   constructor(
     private cartService: CartService,
-    private bookService: BookService
-) { ;}
+    private bookService: BookService,
+    private sortPipe:SortPipe
+) { }
   booksBooked=this.bookService.getBooksBasket()
   books=this.bookService.getBooksStorage();
   totalBooked=0;
   totalSumBooked=0;
-  
+
   removeAllBooks() {
     this.cartService.removeAllBooks();
     this.totalBooked=0;
@@ -29,5 +31,8 @@ export class CartComponentComponent  {
     this.totalSumBooked=this.cartService.updateTotalSum();
    }
 }
-
+ sortArray(order:string,parameter:string){
+  let sortedArr = this.sortPipe.transform(this.booksBooked, order, parameter);
+   return this.booksBooked=sortedArr
+  } 
 }

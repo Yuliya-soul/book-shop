@@ -1,10 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import {  Observable } from 'rxjs';
-
 import { BookService } from '../services/book.service';
 import { CartService } from '../services/cart.service';
-import {HttpClient} from '@angular/common/http';
-import { Book, IBook } from '../books';
+import { IBook } from '../books';
 @Component({
   selector: 'app-books-list-component',
   templateUrl: './books-list-component.component.html',
@@ -22,9 +20,9 @@ export class BooksListComponentComponent  implements OnInit {
    totalBooked=0;
   totalSumBooked=0;
   users?: Observable<any> 
-  user?: IBook; // данные вводимого пользователя
-  receivedUser?: IBook; // полученный пользователь
-  done: boolean = false;
+  user?: IBook;
+  receivedUser?: IBook; 
+  done = false;
 
   ngOnInit(){
   this.bookService.getBooks().subscribe((books) => this.books = books)  
