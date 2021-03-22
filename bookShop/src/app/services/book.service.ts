@@ -1,5 +1,5 @@
 import {  Injectable} from '@angular/core';
-import { database1, databaseBooked1, IBook} from '../books';
+import { Book, database1, databaseBooked1, IBook} from '../books';
 import {HttpClient} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 @Injectable({
@@ -7,10 +7,11 @@ import { Observable, of } from 'rxjs';
 })
 
 export class BookService  {
+  messageService: any;
 constructor(private http: HttpClient){ }
 database=database1
 databaseBooked= databaseBooked1;
-
+id1?:number
 configUrl = 'assets/Book.json';
 
  getBooksStorage() {
@@ -27,10 +28,14 @@ configUrl = 'assets/Book.json';
   getBooks(): Observable<IBook[]> {
     return of(this.database);
   }
-  getBookById(id: number){
-    return JSON.stringify(this.database.filter(item => item.id === id))
+  getBookById(id: string|null){
+   if(id!=null){
+   this.id1=Number.parseInt(id);
+     }
+console.log(this.id1)
+  return JSON.stringify(this.database.filter(item => item.id === this.id1))
   }
-
+ 
 }
 
 

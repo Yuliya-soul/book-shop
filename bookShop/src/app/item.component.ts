@@ -1,23 +1,23 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import { IBook } from './books';
 import { BookService } from './services/book.service';
   
 @Component({
     selector: 'item-info',
-    template: `<h2>Product {{id}}</h2>
+    template: `<h2>Product id: {{id}}</h2>
     <br>
-  
+  {{bookSelected}}
               `,
     providers: [BookService]        
 })
-export class ItemComponent{ 
-    
+export class ItemComponent implements OnInit{ 
     id?: number|undefined;
- parameter:any
+    bookId?: string;
+    bookSelected?:string;
     private routeSubscription: Subscription;
-   
+
     constructor(
         private route: ActivatedRoute,
         private bookService:BookService,
@@ -25,8 +25,11 @@ export class ItemComponent{
         ){
          
         this.routeSubscription = route.params.subscribe(params=>this.id=params['id']);
-    this.parameter=route.params.subscribe(params=>this.id=params['id'])
+     }
+    ngOnInit(): void {
+    const bookId = this.route.snapshot.paramMap.get('id');
+    this.bookSelected=this.bookService.getBookById(bookId);
     }
 
-   // selectedBook=this.bookService.getBookById(2)
+
 }
